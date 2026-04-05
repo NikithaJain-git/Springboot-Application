@@ -99,6 +99,7 @@ AWS EKS → Prometheus → Grafana
 ├── Dockerfile         # Application containerization
 ├── kubernetes/        # Kubernetes manifests
 ├── helm/              # Helm charts
+
 ├── terraform/         # Infrastructure provisioning using Terraform
 
 ---
@@ -107,6 +108,7 @@ AWS EKS → Prometheus → Grafana
 
 # Step 1: Provision infrastructure using Terraform
 terraform init
+
 terraform apply
 
 # Step 2: Configure kubectl for EKS
