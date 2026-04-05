@@ -1,4 +1,3 @@
-
 🚀 DevOps Mega Project – Bank Application (AWS EKS)
 
 🔗 Project Documentation
@@ -12,15 +11,19 @@ https://nikithajain.hashnode.dev/devops-mega-project
 
 This project demonstrates a complete end-to-end DevOps and DevSecOps pipeline for deploying a microservices-based Spring Boot Bank Application on AWS EKS.
 
-It includes infrastructure provisioning using Terraform, CI/CD automation, GitOps-based deployment, and monitoring for a production-like setup.
+It includes infrastructure provisioning using Terraform, CI/CD automation, GitOps-based deployment using ArgoCD, and monitoring for a production-like setup.
 
 ---
 
 🏗 Architecture
 
+"Architecture Diagram" (./architecture.png)
+
+The architecture represents a layered DevOps workflow:
+
 🔹 Infrastructure Provisioning (IaC)
 
-Terraform is used to provision AWS infrastructure:
+Terraform is used to provision AWS infrastructure including:
 
 - VPC and networking components
 - IAM roles and security configurations
@@ -32,10 +35,11 @@ Terraform is used to provision AWS infrastructure:
 
 GitHub → Jenkins → Docker → Docker Hub
 
-- Code is pushed to GitHub
+- Developers push code to GitHub
 - Jenkins pipeline is triggered automatically
 - Application is built and packaged
-- Docker image is created and pushed to Docker Hub
+- Docker image is created using Dockerfile
+- Image is pushed to Docker Hub
 
 ---
 
@@ -43,9 +47,9 @@ GitHub → Jenkins → Docker → Docker Hub
 
 ArgoCD → AWS EKS
 
-- ArgoCD monitors Git repository
-- Automatically deploys changes to Kubernetes (EKS)
-- Ensures declarative and version-controlled deployments
+- ArgoCD continuously monitors the Git repository
+- Automatically syncs changes to Kubernetes (EKS)
+- Eliminates manual deployments and ensures consistency
 
 ---
 
@@ -53,7 +57,7 @@ ArgoCD → AWS EKS
 
 AWS EKS → Prometheus → Grafana
 
-- Prometheus collects metrics from cluster and applications
+- Prometheus collects application and cluster metrics
 - Grafana visualizes metrics using dashboards
 - Enables monitoring and alerting
 
@@ -74,16 +78,17 @@ AWS EKS → Prometheus → Grafana
 
 ---
 
-🚀 CI/CD Pipeline Flow
+🚀 CI/CD & GitOps Flow
 
 1. Developer pushes code to GitHub
-2. Jenkins pipeline is triggered via webhook
+2. Jenkins pipeline is triggered automatically
 3. Application is built and packaged
 4. Docker image is created using Dockerfile
 5. Image is scanned using Trivy for vulnerabilities
 6. Image is pushed to Docker Hub
-7. ArgoCD detects changes and deploys to AWS EKS
-8. Application is monitored using Prometheus and Grafana
+7. ArgoCD detects changes in Git repository
+8. ArgoCD automatically syncs and deploys application to AWS EKS
+9. Application is monitored using Prometheus and Grafana
 
 ---
 
@@ -95,6 +100,25 @@ AWS EKS → Prometheus → Grafana
 ├── kubernetes/        # Kubernetes manifests
 ├── helm/              # Helm charts
 ├── terraform/         # Infrastructure provisioning using Terraform
+
+---
+
+▶️ How Deployment Works
+
+# Step 1: Provision infrastructure using Terraform
+terraform init
+terraform apply
+
+# Step 2: Configure kubectl for EKS
+aws eks --region <region> update-kubeconfig --name <cluster-name>
+
+# Step 3: Push code to GitHub
+# Jenkins builds and pushes Docker image to Docker Hub
+
+# Step 4: ArgoCD automatically syncs and deploys application
+
+Application deployment is handled using ArgoCD (GitOps approach).
+Any changes pushed to the Git repository are automatically detected and deployed to the EKS cluster.
 
 ---
 
@@ -114,18 +138,6 @@ AWS EKS → Prometheus → Grafana
 
 ---
 
-▶️ How to Run (High-Level Steps)
-
-1. Provision infrastructure using Terraform
-2. Configure AWS credentials and EKS cluster
-3. Build Docker image using Dockerfile
-4. Push image to Docker Hub
-5. Deploy application using Kubernetes/Helm
-6. Configure ArgoCD for GitOps deployment
-7. Monitor application using Prometheus and Grafana
-
----
-
 📸 Screenshots
 
 Add screenshots for better understanding:
@@ -137,11 +149,21 @@ Add screenshots for better understanding:
 
 ---
 
+⚡ Challenges & Learnings
+
+- Implementing CI/CD pipeline automation using Jenkins
+- Understanding Kubernetes deployments and service exposure
+- Setting up GitOps workflow using ArgoCD
+- Integrating security scanning into CI/CD pipeline
+- Monitoring application performance using Prometheus and Grafana
+
+---
+
 💡 Key Achievements
 
 - Reduced deployment time by 40% using CI/CD automation
 - Improved deployment consistency and reliability
-- Implemented secure DevSecOps practices
+- Eliminated manual deployments using GitOps approach
 - Built scalable and self-healing Kubernetes-based architecture
 
 ---
