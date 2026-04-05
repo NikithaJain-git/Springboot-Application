@@ -95,9 +95,11 @@ AWS EKS → Prometheus → Grafana
 📁 Project Structure
 
 .
+
 ├── Jenkinsfile        # CI/CD pipeline definition
 ├── Dockerfile         # Application containerization
 ├── kubernetes/        # Kubernetes manifests
+
 ├── helm/              # Helm charts
 
 ├── terraform/         # Infrastructure provisioning using Terraform
