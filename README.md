@@ -97,7 +97,9 @@ AWS EKS → Prometheus → Grafana
 .
 
 ├── Jenkinsfile        # CI/CD pipeline definition
+
 ├── Dockerfile         # Application containerization
+
 ├── kubernetes/        # Kubernetes manifests
 
 ├── helm/              # Helm charts
