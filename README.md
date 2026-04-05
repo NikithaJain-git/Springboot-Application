@@ -24,3 +24,8 @@
 
 ## How to Run
 (terraform + kubectl steps)
+
+## 🔗 Project Documentation
+For a complete step-by-step explanation of the architecture, setup, and implementation, refer to the blog:  
+👉 https://nikithajain.hashnode.dev/devops-mega-project
+
