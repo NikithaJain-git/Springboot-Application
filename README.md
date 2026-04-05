@@ -18,7 +18,7 @@ It covers the complete lifecycle from code commit to production deployment using
 
 🏗 Architecture
 
-"Architecture Diagram" (./architecture.png)
+"Architectural flow"
 
 🔁 Flow:
 
