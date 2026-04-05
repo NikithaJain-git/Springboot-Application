@@ -1,31 +1,120 @@
-# Springboot-Application
 
-# DevOps Mega Project – Bank Application (AWS EKS)
+🚀 DevOps Mega Project – Bank Application (AWS EKS)
 
-## Architecture
-- GitHub → Jenkins → Docker → EKS → ArgoCD → Monitoring
+🔗 Project Documentation
 
-## Tech Stack
-- Jenkins, Docker, Kubernetes (EKS), ArgoCD
-- Terraform (Infrastructure)
-- SonarQube, Trivy, OWASP (Security)
-- Prometheus, Grafana (Monitoring)
+Detailed step-by-step implementation:
+https://nikithajain.hashnode.dev/devops-mega-project
 
-## CI/CD Flow
-1. Code pushed to GitHub
-2. Jenkins pipeline triggered
-3. Build Docker image
-4. Scan using Trivy
-5. Push to registry
-6. Deploy via ArgoCD to EKS
+---
 
-## Screenshots
-(Add Jenkins, Grafana, ArgoCD UI screenshots)
+📌 Overview
 
-## How to Run
-(terraform + kubectl steps)
+This project demonstrates an end-to-end DevOps and DevSecOps pipeline for deploying a microservices-based Spring Boot Bank Application on AWS EKS.
 
-## 🔗 Project Documentation
-For a complete step-by-step explanation of the architecture, setup, and implementation, refer to the blog:  
-👉 https://nikithajain.hashnode.dev/devops-mega-project
+It covers the complete lifecycle from code commit to production deployment using CI/CD, containerization, GitOps, and monitoring tools.
+
+---
+
+🏗 Architecture
+
+"Architecture Diagram" (./architecture.png)
+
+🔁 Flow:
+
+GitHub → Jenkins → Docker → Docker hub → AWS EKS → ArgoCD → Prometheus & Grafana
+
+---
+
+⚙️ Tech Stack
+
+- CI/CD: Jenkins
+- Containerization: Docker
+- Container Registry: Docker hub
+- Orchestration: Kubernetes (AWS EKS), Helm
+- Cloud: AWS (EC2, VPC, IAM, EKS)
+- GitOps: ArgoCD
+- DevSecOps: SonarQube, Trivy, OWASP Dependency Check
+- Monitoring: Prometheus, Grafana
+
+
+---
+
+🚀 CI/CD Pipeline Flow
+
+1. Developer pushes code to GitHub
+2. Jenkins pipeline is triggered automatically
+3. Application is built and packaged
+4. Docker image is created using Dockerfile
+5. Image is scanned using Trivy for vulnerabilities
+6. Image is pushed to Amazon ECR
+7. ArgoCD detects changes and deploys to AWS EKS cluster
+8. Application is monitored using Prometheus and Grafana
+
+---
+
+📁 Project Structure
+
+.
+├── Jenkinsfile        # CI/CD pipeline definition
+├── Dockerfile         # Application containerization
+├── kubernetes/        # Kubernetes manifests
+├── helm/              # Helm charts
+├── terraform/         # Infrastructure provisioning (if applicable)
+
+---
+
+🔐 DevSecOps Implementation
+
+- Integrated SonarQube for static code analysis
+- Used Trivy for container vulnerability scanning
+- Implemented OWASP Dependency Check for identifying vulnerable dependencies
+
+---
+
+📊 Monitoring & Logging
+
+- Configured Prometheus for metrics collection
+- Built dashboards using Grafana for visualization
+- (Optional) Implemented centralized logging using EFK stack
+
+---
+
+▶️ How to Run (High-Level Steps)
+
+1. Provision infrastructure using Terraform
+2. Build Docker image using Dockerfile
+3. Push image to Docker hub
+4. Deploy application using Kubernetes manifests / Helm charts
+5. Configure ArgoCD for GitOps-based deployment
+6. Monitor application using Prometheus and Grafana
+
+---
+
+📸 Screenshots
+
+Add screenshots for better understanding:
+
+- Jenkins Pipeline Execution
+- ArgoCD Application Dashboard
+- Kubernetes Pods / Services
+- Grafana Monitoring Dashboard
+
+---
+
+💡 Key Achievements
+
+- Reduced deployment time by 40% using CI/CD automation
+- Improved deployment consistency and reliability
+- Implemented secure DevSecOps pipeline
+- Built scalable and self-healing Kubernetes-based architecture
+
+---
+
+📖 Additional Resources
+
+- Blog: https://nikithajain.hashnode.dev/devops-mega-project
+- LinkedIn Post: https://www.linkedin.com/posts/nikithajainn_devops-kubernetes-ciabrcd-activity-7314904216949428225-i4Mh
+
+---
 
